@@ -1,0 +1,373 @@
+<div class="scanline">
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#1a1b26]/85 border-b border-[#33385a]">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <span class="mono text-sm text-[#7dcfff]">CARLOS.ROJAS.RAMIREZ.25@GMAIL.COM<span class="prompt-sym">:~$</span></span>
+    <div class="hidden sm:flex gap-7 text-sm font-medium">
+      <a href="#about" class="nav-link">Sobre mí</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Proyectos</a>
+      <a href="#contact" class="nav-link">Contacto</a>
+    </div>
+  </div>
+</nav>
+<header class="pt-32 pb-20 px-6">
+  <div class="max-w-5xl mx-auto">
+<!-- HERO -->
+<div class="terminal-window" (click)="focusInput()">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="file-name">perfil.sh</span>
+  </div>
+
+  <div class="terminal-body" #terminalBody>
+
+    @for (line of history(); track $index) {
+      <div class="terminal-line">
+        @if (line.type === 'command') {
+          <span class="prompt">$</span> <span class="cmd-text">{{ line.text }}</span>
+        } @else {
+          <span [class.highlight]="line.text.includes('::')">{{ line.text }}</span>
+        }
+      </div>
+    }
+
+    @if (!introFinished()) {
+      <div class="terminal-line">
+        {{ currentTypingText() }}<span class="cursor"></span>
+      </div>
+    }
+
+@if (introFinished()) {
+  <div class="terminal-line input-line">
+    <span class="prompt">$</span>
+    <input
+      #commandInput
+      type="text"
+      [(ngModel)]="userInput"
+      [style.width.ch]="userInput.length || 1"
+      (keyup.enter)="onEnter()"
+      autocomplete="off"
+      spellcheck="false"
+      class="terminal-input"
+    />
+  </div>
+}
+
+  </div>
+</div>
+
+
+    <h1 class="text-4xl sm:text-5xl font-bold mt-10 leading-tight tracking-tight">
+      Desarrollador de<br><span class="text-[#7dcfff]">sistemas.</span>
+    </h1>
+    <p class="text-[#8b91b8] text-lg mt-4 max-w-xl leading-relaxed">
+      Buen dia. Mi nombre es Carlos Rojas soy programador y cuento con mas de un
+      año de experiencia certificada, e desarrollado sistemas tanto empresariales
+      como de negocio : ARQUITECTURA , DOCKER , SERVIDORES , TESTING , SEGURIDAD 
+    </p>
+    <div class="flex flex-wrap gap-3 mt-8">
+      <a href="#projects" class="px-5 py-3 rounded-md bg-[#7dcfff] text-[#1a1b26] font-semibold text-sm hover:opacity-90 transition">Ver proyectos</a>
+      <a href="#contact" class="px-5 py-3 rounded-md border border-[#33385a] text-[#c9d2f7] font-semibold text-sm hover:border-[#bb9af7] transition">Contactar</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="px-6 py-16 border-t border-[#33385a]">
+  <div class="max-w-5xl mx-auto">
+    <p class="eyebrow text-xs mb-2">SOBRE MÍ</p>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 tracking-tight">Quién soy</h2>
+    <p class="text-[#c9d2f7]/90 leading-relaxed max-w-2xl">
+      Soy desarrollador full stack con foco en infraestructura. Diseño APIs y bases de datos,
+      construyo interfaces web y aplicaciones móviles, y administro los servidores Linux
+      (Ubuntu en producción, Arch en mi entorno diario) donde todo eso finalmente corre.
+      Me interesa el ciclo completo: escribir el código, desplegarlo y mantenerlo estable y seguro.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="px-6 py-16 border-t border-[#33385a]">
+  <div class="max-w-5xl mx-auto">
+    <p class="eyebrow text-xs mb-2">STACK TÉCNICO</p>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-10 tracking-tight">Con qué trabajo</h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    
+      <div class="skill-card p-6" (click)="openCard('backend')">
+        <h3 class="font-bold text-lg mb-1 text-[#7dcfff]">Backend</h3>
+        <p class="text-xs text-[#8b91b8] mb-4">APIs y lógica de servidor</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-2 py-1 rounded">Node.js</span>
+          <span class="tag text-xs px-2 py-1 rounded">Python</span>
+          <span class="tag text-xs px-2 py-1 rounded">Spring Boot</span>
+          <span class="tag text-xs px-2 py-1 rounded">PostgreSQL</span>
+          <span class="tag text-xs px-2 py-1 rounded">MySql</span>
+          <span class="tag text-xs px-2 py-1 rounded">Laravel</span>
+          <span class="tag text-xs px-2 py-1 rounded">C#</span>
+           <span class="tag text-xs px-2 py-1 rounded">ORM</span>
+        </div>
+      </div>
+
+      <div class="skill-card p-6" (click)="openCard('frontend')">
+        <h3 class="font-bold text-lg mb-1 text-[#bb9af7]">Frontend</h3>
+        <p class="text-xs text-[#8b91b8] mb-4">Interfaces web</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-2 py-1 rounded">Angular</span>
+          <span class="tag text-xs px-2 py-1 rounded">React</span>
+          <span class="tag text-xs px-2 py-1 rounded">TypeScript</span>
+          <span class="tag text-xs px-2 py-1 rounded">Tailwind</span>
+          <span class="tag text-xs px-2 py-1 rounded">HTML/CSS</span>
+        </div>
+      </div>
+ 
+      <div class="skill-card p-6" (click)="openCard('movil')">
+        <h3 class="font-bold text-lg mb-1 text-[#ff9e64]">Móvil</h3>
+        <p class="text-xs text-[#8b91b8] mb-4">Apps multiplataforma</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-2 py-1 rounded">React Native</span>
+          <span class="tag text-xs px-2 py-1 rounded">Kotlin</span>
+        </div>
+      </div>
+
+      <div class="skill-card p-6" (click)="openCard('servidor')">
+        <h3 class="font-bold text-lg mb-1 text-[#9ece6a]">Servidores</h3>
+        <p class="text-xs text-[#8b91b8] mb-4">Infraestructura y despliegue</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-2 py-1 rounded">Ubuntu Server</span>
+          <span class="tag text-xs px-2 py-1 rounded">Arch Linux</span>
+          <span class="tag text-xs px-2 py-1 rounded">Nginx</span>
+          <span class="tag text-xs px-2 py-1 rounded">Docker</span>
+          <span class="tag text-xs px-2 py-1 rounded">Seguridad</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="px-6 py-16 border-t border-[#33385a]">
+  <div class="max-w-5xl mx-auto">
+    <p class="eyebrow text-xs mb-2">TRABAJO REALIZADO</p>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-10 tracking-tight">Proyectos</h2>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <div class="proj-card overflow-hidden" >
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">01 — Libreria + Backend</p>
+          <h3 class="font-bold text-xl mb-2">Libreria  de facturacion con la SUNAC</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Dada las circunstancias de que se necesitaba un facturador como por ejemplo
+            laravel usa grenter , al no haber soporte de un facturador directo con Nest,
+            cree un npm para facturacion y es de codigo abierto 
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Nest.js</span>
+          </div>
+          <a href="https://www.npmjs.com/package/sunat-engine-nest?activeTab=readme"  target="_blank" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+      <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">02 — App móvil</p>
+          <h3 class="font-bold text-xl mb-2">Sistema de ventas</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Descripción breve: qué problema resuelve, para quién y qué parte
+            construiste (backend, frontend o ambos).
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Kotlin</span>
+  
+          </div>
+          <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+      <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">03 — Infraestructura</p>
+          <h3 class="font-bold text-xl mb-2">Nombre del proyecto</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Descripción breve: por ejemplo, configuración de un servidor Ubuntu
+            con Nginx, Docker y despliegue automatizado.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Docker</span>
+            <span class="tag text-xs px-2 py-1 rounded">Nginx</span>
+            <span class="tag text-xs px-2 py-1 rounded">CI/CD</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+      <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">04 — Full stack</p>
+          <h3 class="font-bold text-xl mb-2">Nombre del proyecto</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Descripción breve: qué problema resuelve, para quién y qué parte
+            construiste (backend, frontend o ambos).
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">React</span>
+            <span class="tag text-xs px-2 py-1 rounded">Python</span>
+            <span class="tag text-xs px-2 py-1 rounded">PostgreSQL</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="px-6 py-20 border-t border-[#33385a]">
+  <div class="max-w-5xl mx-auto">
+    <p class="eyebrow text-xs mb-2">HABLEMOS</p>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-8 tracking-tight">Contacto</h2>
+
+    <div class="term max-w-xl" (click)="focusContactInput()">
+      <div class="term-bar px-4 py-3 flex items-center gap-2">
+        <span class="dot" style="background:#f7768e"></span>
+        <span class="dot" style="background:#ff9e64"></span>
+        <span class="dot" style="background:#9ece6a"></span>
+        <span class="mono text-xs text-[#7a80a8] ml-2">contacto.sh</span>
+      </div>
+      <div class="p-6 mono text-sm leading-relaxed">
+        <p><span class="text-[#9ece6a]">●</span> Disponible para nuevos proyectos</p>
+        <p class="mt-4">
+          <span class="text-[#bb9af7]">Email</span>   <span class="prompt-sym">::</span>
+          <a href="mailto:tu_correo@ejemplo.com" class="text-[#7dcfff] hover:underline">carlos.rojas.ramirez.25@gmail.com</a>
+        </p>
+        <p>
+          <span class="text-[#bb9af7]">Contacto</span><span class="prompt-sym">::</span>
+          <a href="#" class="text-[#7dcfff] hover:underline">907596305</a>
+        </p>
+<p>
+          <span class="text-[#bb9af7]">INFO</span><span class="prompt-sym">::</span>
+          Escribe un mensaje y presiona Enter para enviarlo
+        </p>
+
+<p class="mt-4 input-line">
+  <span class="prompt-sym">$</span>
+  <textarea
+    #contactInput
+    [(ngModel)]="contactMessage"
+    (keydown.enter)="onContactEnter($event)"
+    (input)="onContactInput($event)"
+    [disabled]="contactLoading()"
+    autocomplete="off"
+    spellcheck="false"
+    rows="1"
+    class="terminal-input contact-textarea"
+  ></textarea>
+</p>
+
+@if (contactLoading()) {
+          <p class="mt-2 text-[#8b91b8]">Cargando...</p>
+        }
+
+@if (contactStatus()) {
+          <p class="mt-2" [ngClass]="contactStatus() === 'ok' ? 'text-[#9ece6a]' : 'text-[#f7768e]'">
+            {{ contactStatusText() }}
+          </p>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="px-6 py-8 border-t border-[#33385a] text-center">
+  <p class="text-xs text-[#8b91b8]">© 2026 · Carlos Rojas Ramirez</p>
+</footer>
+</div>
+
+
+@if (expandedCard() === 'backend') {
+  <div class="modal-overlay" (click)="closeCard()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeCard()">✕</button>
+      <h3 class="font-bold text-[1.450rem] mb-1 text-[#7dcfff]">Programador Backend </h3>
+      <p class="text-[0.90rem] text-[#8b91b8] mb-4">
+         Queria empezar comentando que me gusta mucho el backend y es el lado donde 
+         mas me he enfocado y me agrada estar.
+         <br>
+         <br>
+         Bueno e desarrollado tanto proyectos como banckend y tambien librerias ,
+         un ejemplo claro, en el lugar donde trabajo se necesitaba un facturador pero no habia 
+         soporte para un lenguaje en especifico como por ejemplo greenter con laravel.
+                  <br>
+         <br>
+         Entonce desarrolle una libreria con firma y soporte para enviar los requerimientos 
+         necesarios a SUNAC, respetando la legalidad y los requerimientos necesarios para enviar
+         correctamente y no sea reachazado los documentos 
+        </p>
+    </div>
+  </div>
+}
+  @if (expandedCard() === 'frontend') {
+  <div class="modal-overlay" (click)="closeCard()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeCard()">✕</button>
+      <h3 class="font-bold text-[1.450rem] mb-1 text-[#bb9af7]">Programador Front End </h3>
+      <p class="text-[0.90rem] text-[#8b91b8] mb-4">
+         Uno de los lenguajes que mas me agradaron en el front end fue 
+         Angular, su sintanxis y su estructura me parecieron familiar y agragdable.
+         <br>
+         <br>
+         La forma en la que trabajo en el front end es analizando de que se tratara y en 
+         que consiste el proyecto dependiendo a ello analiza y ejecuto el mejor procedimiento
+         de diseño y seguridad para ese enfoque en especifico.
+          <br>
+         <br>
+         El proyecto debe y tiene que ser seguro por ende en la mayoria de los casos testeo las 
+         posibilidades de hacking para mejorar el proyecto.
+        </p>
+    </div>
+  </div>}
+
+    @if (expandedCard() === 'movil') {
+  <div class="modal-overlay" (click)="closeCard()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeCard()">✕</button>
+      <h3 class="font-bold text-[1.450rem] mb-1 text-[#ff9e64]">Programador Movil</h3>
+      <p class="text-[0.90rem] text-[#8b91b8] mb-4">
+          POr ejemplo Desarrolle un app para una empresa de servicios de venta de productos con proveedores
+         <br>
+         <br>
+          Dado que en el lugar de trabajo nos enfocamos exclusivamente en desarrollo de sistemas 
+          a empresas que lo requieren , se creo un sistema a la medida para el enfoque que
+          necesitban
+              <br>
+         <br>
+         Aclarar que no se presto servicios a un solo cliete sino a otro mas que requerian servicios 
+         pero en otro enfoque , doy a entender solo uno para epxlicar brevemente el tema que desarrollo
+          <br>
+
+        </p>
+    </div>
+  </div>}
+      @if (expandedCard() === 'servidor') {
+  <div class="modal-overlay" (click)="closeCard()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeCard()">✕</button>
+      <h3 class="font-bold text-[1.450rem] mb-1 text-[#9ece6a]">Servidores </h3>
+      <p class="text-[0.90rem] text-[#8b91b8] mb-4">
+         Los servidores, para mi es un enfoque bastante llamativo y amplio que me parecio
+         muy importante de saber 
+         <br>
+         <br>
+        Tuve la oprtunidad de subir los proyectos hasta la parte final de desplegarlos 
+        a produccion , tanto base de datos como proyectos de front end como de backend
+          <br>
+
+        </p>
+    </div>
+  </div>}

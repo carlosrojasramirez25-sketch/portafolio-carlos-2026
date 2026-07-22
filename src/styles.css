@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+:root{
+  --bg:#1a1b26;
+  --surface:#20233a;
+  --surface2:#262a45;
+  --border:#33385a;
+  --text:#c9d2f7;
+  --text-dim:#8b91b8;
+  --cyan:#7dcfff;
+  --purple:#bb9af7;
+  --amber:#ff9e64;
+  --green:#9ece6a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(125,207,255,0.05), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(187,154,247,0.05), transparent 40%);
+}
+::selection{background:rgba(125,207,255,0.25)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
