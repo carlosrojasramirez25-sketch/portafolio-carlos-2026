@@ -3,12 +3,13 @@
 <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#1a1b26]/85 border-b border-[#33385a]">
   <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
     <span class="mono text-sm text-[#7dcfff]">CARLOS.ROJAS.RAMIREZ.25@GMAIL.COM<span class="prompt-sym">:~$</span></span>
-    <div class="hidden sm:flex gap-7 text-sm font-medium">
-      <a href="#about" class="nav-link">Sobre mí</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Proyectos</a>
-      <a href="#contact" class="nav-link">Contacto</a>
-    </div>
+<div class="hidden sm:flex gap-7 text-sm font-medium">
+  <a href="#about" class="nav-link">Sobre mí</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#projects" class="nav-link">Proyectos</a>
+  <a href="#personal-projects" class="nav-link">Personales</a>
+  <a href="#contact" class="nav-link">Contacto</a>
+</div>
   </div>
 </nav>
 <header class="pt-32 pb-20 px-6">
@@ -159,8 +160,8 @@
 
       <div class="proj-card overflow-hidden" >
         <div class="p-6">
-          <p class="mono text-xs text-[#8b91b8] mb-2">01 — Libreria + Backend</p>
-          <h3 class="font-bold text-xl mb-2">Libreria  de facturacion con la SUNAC</h3>
+          <p class="mono text-xs text-[#8b91b8] mb-2">01 — Libreria</p>
+          <h3 class="font-bold text-xl mb-2">Libreria  de Facturacion con SUNAT</h3>
           <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
             Dada las circunstancias de que se necesitaba un facturador como por ejemplo
             laravel usa grenter , al no haber soporte de un facturador directo con Nest,
@@ -176,7 +177,7 @@
       <div class="proj-card overflow-hidden">
         <div class="p-6">
           <p class="mono text-xs text-[#8b91b8] mb-2">02 — App móvil</p>
-          <h3 class="font-bold text-xl mb-2">Sistema de ventas</h3>
+          <h3 class="font-bold text-xl mb-2">Sistema de Ventas</h3>
           <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
             Descripción breve: qué problema resuelve, para quién y qué parte
             construiste (backend, frontend o ambos).
@@ -192,15 +193,16 @@
       <div class="proj-card overflow-hidden">
         <div class="p-6">
           <p class="mono text-xs text-[#8b91b8] mb-2">03 — Infraestructura</p>
-          <h3 class="font-bold text-xl mb-2">Nombre del proyecto</h3>
+          <h3 class="font-bold text-xl mb-2">ERP Pasteleria Chantilly</h3>
           <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
-            Descripción breve: por ejemplo, configuración de un servidor Ubuntu
-            con Nginx, Docker y despliegue automatizado.
+          Se migro el sistema de pasteleria chantilly a lenguajes mas rapidos
+          y optimos tanton como el fron end y el backend. 
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tag text-xs px-2 py-1 rounded">Docker</span>
             <span class="tag text-xs px-2 py-1 rounded">Nginx</span>
-            <span class="tag text-xs px-2 py-1 rounded">CI/CD</span>
+            <span class="tag text-xs px-2 py-1 rounded">Nest.js</span>
+             <span class="tag text-xs px-2 py-1 rounded">Next.js</span>
           </div>
           <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
         </div>
@@ -208,18 +210,127 @@
 
       <div class="proj-card overflow-hidden">
         <div class="p-6">
-          <p class="mono text-xs text-[#8b91b8] mb-2">04 — Full stack</p>
-          <h3 class="font-bold text-xl mb-2">Nombre del proyecto</h3>
+          <p class="mono text-xs text-[#8b91b8] mb-2">04 — Backend</p>
+          <h3 class="font-bold text-xl mb-2">Facturador</h3>
           <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
-            Descripción breve: qué problema resuelve, para quién y qué parte
-            construiste (backend, frontend o ambos).
+            Se implemento y se uso por el lado del backend un facturador 
+            para los documentos que se debian enviar a sunat y se uso
+            la libreria de facturacion que actualmente se esta usando ,
+            se uso redis y docker para la cola de respuestas de sunat
           </p>
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="tag text-xs px-2 py-1 rounded">React</span>
-            <span class="tag text-xs px-2 py-1 rounded">Python</span>
-            <span class="tag text-xs px-2 py-1 rounded">PostgreSQL</span>
+            <span class="tag text-xs px-2 py-1 rounded">Nest.js</span>
+            <span class="tag text-xs px-2 py-1 rounded">Mysql</span>
+            <span class="tag text-xs px-2 py-1 rounded">Docker</span>
+                   <span class="tag text-xs px-2 py-1 rounded">Redis</span>
           </div>
           <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+            <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">05 — Backend</p>
+          <h3 class="font-bold text-xl mb-2">Sistema ERP Tienda Informatica</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Se implemento y se uso por el lado del backend un facturador 
+            para los documentos que se debian enviar a sunat y se uso
+            la libreria de facturacion que actualmente se esta usando ,
+            se uso redis y docker para la cola de respuestas de sunat
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Nest.js</span>
+            <span class="tag text-xs px-2 py-1 rounded">Mysql</span>
+            <span class="tag text-xs px-2 py-1 rounded">Docker</span>
+                   <span class="tag text-xs px-2 py-1 rounded">Redis</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+                  <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">05 — Backend</p>
+          <h3 class="font-bold text-xl mb-2">Ecommers para una Tienda Informatica</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Se implemento y se uso por el lado del backend un facturador 
+            para los documentos que se debian enviar a sunat y se uso
+            la libreria de facturacion que actualmente se esta usando ,
+            se uso redis y docker para la cola de respuestas de sunat
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Nest.js</span>
+            <span class="tag text-xs px-2 py-1 rounded">Mysql</span>
+            <span class="tag text-xs px-2 py-1 rounded">Docker</span>
+                   <span class="tag text-xs px-2 py-1 rounded">Redis</span>
+          </div>
+          <a href="#" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL PROJECTS -->
+<section id="personal-projects" class="px-6 py-16 border-t border-[#33385a]">
+  <div class="max-w-5xl mx-auto">
+    <p class="eyebrow text-xs mb-2">FUERA DEL TRABAJO</p>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">Proyectos Personales</h2>
+    <p class="text-[#8b91b8] text-sm mb-10 max-w-2xl">
+      Proyectos que hago por mi cuenta para aprender, experimentar o simplemente porque se me ocurrió una idea.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">P01 — Personal</p>
+          <h3 class="font-bold text-xl mb-2"> Chat en tiempo real con Socket</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+          Es un chat que puedes hacer llamadas videollamadas con mensajeria y subir fotos ,
+          este proyecto fue realizado con socket.io para la comunicacion vidireccional 
+          en tiempo real
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Nest.js</span>
+            <span class="tag text-xs px-2 py-1 rounded">Next.js</span>
+            <span class="tag text-xs px-2 py-1 rounded">socket</span>
+            <span class="tag text-xs px-2 py-1 rounded">tailwing</span>
+            <span class="tag text-xs px-2 py-1 rounded">Mysql</span>
+            <span class="tag text-xs px-2 py-1 rounded">servidores gratuitos</span>
+          </div>
+          <a href="https://front-chat-2026.vercel.app/" target="_blank" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+      <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">P02 — Personal</p>
+          <h3 class="font-bold text-xl mb-2">Nombre del proyecto</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Breve descripción del proyecto personal.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Tech 1</span>
+            <span class="tag text-xs px-2 py-1 rounded">Tech 2</span>
+          </div>
+          <a href="#" target="_blank" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
+        </div>
+      </div>
+
+      <div class="proj-card overflow-hidden">
+        <div class="p-6">
+          <p class="mono text-xs text-[#8b91b8] mb-2">P03 — Personal</p>
+          <h3 class="font-bold text-xl mb-2">Nombre del proyecto</h3>
+          <p class="text-[#c9d2f7]/80 text-sm leading-relaxed mb-4">
+            Breve descripción del proyecto personal.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-xs px-2 py-1 rounded">Tech 1</span>
+            <span class="tag text-xs px-2 py-1 rounded">Tech 2</span>
+          </div>
+          <a href="#" target="_blank" class="text-sm font-semibold text-[#7dcfff] hover:underline">Ver repositorio →</a>
         </div>
       </div>
 
@@ -306,7 +417,7 @@
                   <br>
          <br>
          Entonce desarrolle una libreria con firma y soporte para enviar los requerimientos 
-         necesarios a SUNAC, respetando la legalidad y los requerimientos necesarios para enviar
+         necesarios a SUNAT, respetando la legalidad y los requerimientos necesarios para enviar
          correctamente y no sea reachazado los documentos 
         </p>
     </div>
