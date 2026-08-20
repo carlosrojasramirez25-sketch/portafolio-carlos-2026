@@ -34,6 +34,43 @@
   border-color:var(--cyan);
   box-shadow:0 12px 30px -18px rgba(125,207,255,0.4);
 }
+.skill-card:focus-visible{
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+
+.experience-panel{
+  background:linear-gradient(135deg, rgba(32,35,58,.96), rgba(38,42,69,.72));
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:24px;
+  box-shadow:0 20px 45px -30px rgba(125,207,255,.35);
+}
+.experience-terminal{
+  background:#16172a;
+  border:1px solid #2e2f4a;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 20px 50px -28px rgba(125,207,255,.35);
+}
+.experience-terminal-body{
+  padding:24px;
+  color:#c7c7e0;
+  line-height:1.65;
+}
+.terminal-output{color:#a9afd0}
+.experience-terminal-body p{margin-bottom:0}
+.experience-heading{display:flex;align-items:center;gap:12px}
+.status-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 0 5px rgba(158,206,106,.12), 0 0 16px rgba(158,206,106,.45);
+}
+.experience-list{display:grid;gap:12px;margin:0;padding:0;list-style:none;color:rgba(201,210,247,.82)}
+.experience-list li{position:relative;padding-left:18px;line-height:1.55}
+.experience-list li::before{content:'>';position:absolute;left:0;color:var(--cyan);font-family:'JetBrains Mono',monospace}
 
 .tag{
   background:var(--surface2);
@@ -52,6 +89,47 @@
   transition:border-color .18s ease, transform .18s ease;
 }
 .proj-card:hover{border-color:var(--purple);transform:translateY(-2px)}
+
+.project-preview{
+  display:block;
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  object-position:center;
+  border-bottom:1px solid var(--border);
+  filter:saturate(.82) contrast(1.04);
+  transition:filter .25s ease, transform .25s ease;
+}
+.proj-card:hover .project-preview{
+  filter:saturate(1) contrast(1.04);
+  transform:scale(1.015);
+}
+
+.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .55s ease, transform .55s ease, border-color .18s ease;
+}
+.reveal-on-scroll.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-on-scroll:nth-child(2){transition-delay:.06s}
+.reveal-on-scroll:nth-child(3){transition-delay:.12s}
+.reveal-on-scroll:nth-child(4){transition-delay:.18s}
+.reveal-on-scroll:nth-child(5){transition-delay:.24s}
+.reveal-on-scroll:nth-child(6){transition-delay:.30s}
+
+@media (max-width: 640px){
+  .project-preview{height:155px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal-on-scroll{
+    opacity:1;
+    transform:none;
+  }
+}
 
 a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
 
@@ -83,6 +161,17 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
   padding: 12px 16px;
   background: #16172a;
 }
+
+.terminal-status{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#8b91b8;
+  font-size:11px;
+  font-family:'JetBrains Mono',monospace;
+}
+.terminal-status .status-dot{width:7px;height:7px;box-shadow:0 0 8px rgba(158,206,106,.55)}
 
 .dot { width: 12px; height: 12px; border-radius: 50%; }
 .red { background: #ff5f56; }
@@ -116,6 +205,7 @@ caret-color: #4ade80;
   min-width: 4px;
   max-width: 100%;
 }
+.terminal-input::placeholder{color:#5f668d;opacity:1}
 
 .cursor {
   display: inline-block;
@@ -148,6 +238,38 @@ caret-color: #4ade80;
   display: flex;
   align-items: flex-start;
   gap: 0.4rem;
+}
+
+.terminal-shortcuts{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:12px 16px 14px;
+  border-top:1px solid #2e2f4a;
+  background:#16172a;
+}
+.shortcut-label{
+  color:#6f769b;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  margin-right:3px;
+}
+.command-chip{
+  border:1px solid #3b4164;
+  border-radius:999px;
+  padding:4px 9px;
+  color:#93c5fd;
+  background:#20233a;
+  font:11px 'JetBrains Mono',monospace;
+  cursor:pointer;
+  transition:color .18s ease, border-color .18s ease, background .18s ease;
+}
+.command-chip:hover,.command-chip:focus-visible{
+  color:#1a1b26;
+  background:#7dcfff;
+  border-color:#7dcfff;
+  outline:none;
 }
 
 @keyframes blink {

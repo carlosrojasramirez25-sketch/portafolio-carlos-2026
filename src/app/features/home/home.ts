@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, AfterViewChecked, ViewChild, signal, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewChecked, AfterViewInit, ViewChild, signal, ChangeDetectorRef, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../../services/message.service';
 
@@ -16,7 +16,7 @@ interface TerminalLine {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit, AfterViewChecked {
+export class Home implements OnInit, AfterViewChecked, AfterViewInit {
 
   constructor(private cdr: ChangeDetectorRef,
               private messageService:MessageService){}
@@ -27,6 +27,7 @@ export class Home implements OnInit, AfterViewChecked {
   }
 
   expandedCard = signal<string | null>(null);
+  mobileMenuOpen = signal(false);
 
   openCard(name:string):void {
     this.expandedCard.set(name);
@@ -34,6 +35,19 @@ export class Home implements OnInit, AfterViewChecked {
 
   closeCard():void{
      this.expandedCard.set(null);
+  }
+
+  @HostListener('document:keydown.escape')
+  closeModalWithEscape(): void {
+    this.closeCard();
+  }
+
+  toggleMobileMenu():void{
+    this.mobileMenuOpen.update(v => !v);
+  }
+
+  closeMobileMenu():void{
+    this.mobileMenuOpen.set(false);
   }
 
   private introLines: string[] = [
@@ -44,7 +58,7 @@ export class Home implements OnInit, AfterViewChecked {
     'Frontend:: Angular · Astro · Next.js · Odoo',
     'Móvil:: React Native · Kotlin',
     'Infra:: Arch Linux · Ubuntu Server',
-    'Base de Datos:: Oracle · Mysql · MongoDB · PostgreSQL',
+    'Base de Datos:: Oracle · MySQL · MongoDB · PostgreSQL',
     'Info:: Puedes escribir "help"'
   ];
 
@@ -52,6 +66,7 @@ export class Home implements OnInit, AfterViewChecked {
   currentTypingText = signal('');
   introFinished = signal(false);
   userInput = '';
+  quickCommands = ['about', 'skills', 'experience', 'projects', 'contact'];
 
   contactMessage = '';
   contactStatus = signal<'ok' | 'error' | null>(null);
@@ -70,6 +85,7 @@ export class Home implements OnInit, AfterViewChecked {
       'Comandos disponibles:',
       '  about     - sobre mí',
       '  skills    - stack tecnológico',
+      '  experience - experiencia profesional',
       '  contact   - datos de contacto',
       '  clear     - limpiar terminal',
     ],
@@ -81,6 +97,15 @@ export class Home implements OnInit, AfterViewChecked {
       'Backend:: Node.js · Spring Boot · Laravel · Odoo',
       'Frontend:: Angular · Astro · Next.js · Odoo',
       'Móvil:: React Native · Kotlin'
+    ],
+    experience: () => [
+      'Experiencia:: sistemas empresariales e infraestructura',
+      'Responsabilidades:: APIs · datos · despliegue · mantenimiento'
+    ],
+    projects: () => [
+      'Proyectos:: librería SUNAT · ERP · e-commerce · app móvil',
+      'Stack:: Nest.js · Angular · Next.js · Docker · Redis',
+      'Escribe "contact" para conversar conmigo.'
     ],
     contact: () => [
       'Email:: carlos.rojas.ramirez.25@gmail.com'
@@ -97,6 +122,26 @@ export class Home implements OnInit, AfterViewChecked {
       this.scrollToBottom();
       this.shouldScroll = false;
     }
+  }
+
+  ngAfterViewInit(): void {
+    const cards = document.querySelectorAll<HTMLElement>('.reveal-on-scroll');
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(card => card.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    cards.forEach(card => observer.observe(card));
   }
 
   private async playIntro() {
@@ -130,6 +175,13 @@ export class Home implements OnInit, AfterViewChecked {
 
   onEnter(): void {
     const raw = this.userInput.trim();
+    if (!raw) return;
+
+    this.runCommand(raw);
+  }
+
+  runCommand(command: string): void {
+    const raw = command.trim();
     if (!raw) return;
 
     this.history.update(h => [...h, { type: 'command', text: raw }]);
